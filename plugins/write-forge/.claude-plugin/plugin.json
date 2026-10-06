@@ -1,6 +1,6 @@
 {
   "name": "write-forge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Build anyone's own writing skill. Extracts the reusable components of a person's writing (voice, postures) from a corpus plus a structured interview, then generates a standalone plugin.",
   "author": {
     "name": "Yoann CORGNET"
@@ -8,5 +8,11 @@
   "homepage": "https://github.com/Yoann-CORGNET/skills",
   "repository": "https://github.com/Yoann-CORGNET/skills",
   "license": "MIT",
-  "keywords": ["writing", "voice", "style", "authoring", "meta-skill"]
+  "keywords": [
+    "writing",
+    "voice",
+    "style",
+    "authoring",
+    "meta-skill"
+  ]
 }
