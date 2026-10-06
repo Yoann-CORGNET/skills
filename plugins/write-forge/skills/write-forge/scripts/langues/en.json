@@ -1,0 +1,61 @@
+{
+  "langue": "en",
+  "note": "Starter config for English, deliberately thin. Re-derive each list against an English corpus before trusting it: do not treat this as a translation of fr.json, the protocol forbids that (Règle 4, protocole-extraction.md).",
+
+  "mots_outils": [
+    "the", "a", "an", "of", "to", "in", "on", "for", "with", "without", "by",
+    "and", "or", "but", "so", "nor", "that", "which", "who", "whom",
+    "if", "as", "when", "while", "since", "because",
+    "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us", "them",
+    "this", "these", "those",
+    "my", "your", "his", "its", "our", "their",
+    "is", "are", "was", "were", "be", "been", "being",
+    "not", "more", "less", "very", "well", "also", "so"
+  ],
+
+  "paires_quasi_synonymes": [],
+
+  "connecteurs": {
+    "contractifs": ["but", "yet", "however", "clearly", "of course", "in fact", "i maintain that"],
+    "expansifs": ["it seems", "perhaps", "i think", "i believe", "arguably", "to some extent"],
+    "note": "Same function as the French list (composante 1, composantes-posture.md); wording not transposed from French, re-derived on an English corpus."
+  },
+
+  "intensite": {
+    "force_haute": ["very", "extremely", "radically", "totally", "completely", "absolutely"],
+    "force_basse": ["a bit", "somewhat", "slightly", "relatively", "rather"],
+    "note": "Composante 2 (intensité évaluative)."
+  },
+
+  "formes_ambigues": {
+    "we": {
+      "motif": "\\bwe\\b",
+      "note": "English analogue of French « on »/« nous » ambiguity: inclusive, exclusive-team, or editorial 'we'. Raw count is not a disambiguated posture rate."
+    },
+    "modal_hedge": {
+      "motif": "\\b(would|could|might)\\b",
+      "note": "Modal hedges cover several functions (epistemic hedge, politeness, hypothetical). Do not treat the raw count as a single trait."
+    },
+    "interrogative": {
+      "motif": "\\?",
+      "note": "Same three-way ambiguity as French: real question, rhetorical question answered by the author, or a question carrying disagreement."
+    }
+  },
+
+  "marqueurs_typographiques": {
+    "slash": {"motif": "(?<!:)(?<!http)(?<!https)/(?!/)", "note": "Slash compressing an alternative; the pattern crudely excludes URLs."},
+    "fleche_implication": {"motif": "=>", "note": "Arrow as an implication connector."},
+    "point_virgule": {"motif": ";", "note": "Semicolon."},
+    "guillemets_anglais_courbes": {"motif": "[“”]", "note": "Curly English quotes."},
+    "guillemets_droits": {"motif": "\"", "note": "Straight quotes."},
+    "gras_markdown": {"motif": "\\*\\*[^*]+\\*\\*", "note": "Bold in running text."},
+    "code_inline": {"motif": "`[^`]+`", "note": "Inline code on non-code words."},
+    "puce_liste": {"motif": "^\\s*[-*]\\s+", "note": "Bullet list line."}
+  },
+
+  "artefacts_outil": {
+    "note": "The French non-breaking-space and guillemet artifacts do not apply to English; no tool artifact is flagged by default here.",
+    "espace_insecable_avant_double_ponctuation": false,
+    "guillemets_chevrons": false
+  }
+}

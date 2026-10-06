@@ -1,0 +1,87 @@
+{
+  "langue": "fr",
+  "note": "Config par défaut de compte-traits.py pour le français. Ces listes sont des instanciations d'une catégorie fonctionnelle, pas la catégorie elle-même (voir composantes-voix.md). Une instance dans une autre langue re-dérive ce fichier, elle ne le traduit pas mot à mot : copier ce fichier vers <code>.json et retravailler chaque liste sur le corpus de la langue cible.",
+
+  "mots_outils": [
+    "le", "la", "les", "l", "un", "une", "des", "du", "au", "aux",
+    "de", "à", "en", "dans", "sur", "sous", "avec", "sans", "pour", "par",
+    "vers", "chez", "entre", "depuis", "pendant", "avant", "après", "contre",
+    "selon", "malgré", "dès", "hors", "outre", "jusque", "jusqu",
+    "et", "ou", "mais", "donc", "or", "ni", "car", "que", "qui", "quoi", "dont",
+    "si", "comme", "quand", "lorsque", "puisque",
+    "je", "tu", "il", "elle", "on", "nous", "vous", "ils", "elles",
+    "me", "te", "se", "lui", "leur", "y", "en",
+    "ce", "cet", "cette", "ces", "ceci", "cela", "ça",
+    "son", "sa", "ses", "notre", "nos", "votre", "vos", "mon", "ma", "mes", "ton", "ta", "tes",
+    "être", "avoir", "est", "sont", "était", "étaient", "fut", "sera", "seront",
+    "ne", "pas", "plus", "moins", "très", "bien", "aussi", "alors", "ainsi"
+  ],
+
+  "paires_quasi_synonymes": [
+    {
+      "membres": ["car", "parce que"],
+      "note": "Substrat (composante 1 de composantes-voix.md) : arbitrage grammatical stable, pas un choix de sens."
+    },
+    {
+      "membres": ["ceci", "cela"],
+      "note": "Substrat, même statut que car/parce que."
+    },
+    {
+      "membres": ["afin de", "pour"],
+      "note": "Substrat, même statut."
+    }
+  ],
+
+  "connecteurs": {
+    "contractifs": [
+      "mais", "or", "pourtant", "bien que", "en réalité", "évidemment", "bien sûr",
+      "on le sait", "cela dit", "néanmoins", "toutefois", "cependant", "en fait",
+      "il ne fait aucun doute que", "je maintiens que"
+    ],
+    "expansifs": [
+      "il semble", "peut-être", "à mon avis", "je crois que", "il me semble",
+      "sans doute", "probablement", "selon", "d'après", "on pourrait dire",
+      "dans une certaine mesure"
+    ],
+    "note": "Composante 1 (ouverture dialogique) de composantes-posture.md. Comptés ici comme signal brut de surface, pas encodés comme trait : router par le test de tri du protocole avant d'écrire quoi que ce soit."
+  },
+
+  "intensite": {
+    "force_haute": ["très", "extrêmement", "radicalement", "totalement", "complètement", "absolument", "vraiment", "carrément"],
+    "force_basse": ["un peu", "plutôt", "légèrement", "relativement", "quelque peu", "assez", "à peu près"],
+    "note": "Composante 2 (intensité évaluative) de composantes-posture.md."
+  },
+
+  "formes_ambigues": {
+    "on": {
+      "motif": "\\bon\\b",
+      "note": "« on » a quatre valeurs à classer par substitution (les gens / nous / je / vous et moi) : générique-impersonnel (hors posture), inclusif auteur+lecteur (composantes 5 et 6), exclusif d'équipe (composante 7), ou « je » déguisé (composante 7). Le compte brut ci-dessous ne désambiguïse rien : il ne doit jamais être lu comme un taux de posture."
+    },
+    "conditionnel": {
+      "motif": "\\w+(rait|raient|rais|riez|rions)\\b",
+      "note": "Le conditionnel a quatre valeurs : atténuation (composantes 1 et 4), politesse figée (« je voudrais », « pourriez-vous »), hypothétique en système en si (syntaxe pure), ou reprise journalistique (sourçage). Seul l'emploi atténuateur compte pour une posture. Le compte brut est une borne haute grossière, jamais un taux exploitable tel quel."
+    },
+    "interrogative": {
+      "motif": "\\?",
+      "note": "La forme interrogative a trois valeurs selon ce qui suit : question réelle (composantes 1 et 6), question rhétorique dont l'auteur donne la réponse (geste rhétorique, donc Voix), ou question qui porte un désaccord (composantes 1 et 4). Elle ne se compte jamais comme un marqueur unique ; le compte brut de « ? » ci-dessous n'est qu'un dénombreur de phrases interrogatives, pas une ventilation par fonction."
+    }
+  },
+
+  "marqueurs_typographiques": {
+    "slash": {"motif": "(?<!:)(?<!http)(?<!https)/(?!/)", "note": "Slash compressant une alternative. Le motif écarte grossièrement les URL (précédées de http/https/:), sans garantie."},
+    "fleche_implication": {"motif": "=>", "note": "Flèche en connecteur d'implication."},
+    "point_virgule": {"motif": ";", "note": "Point-virgule."},
+    "guillemets_francais": {"motif": "[«»]", "note": "Guillemets français. Souvent produits par la correction automatique en français : voir la note sur les artefacts d'outil."},
+    "guillemets_anglais_courbes": {"motif": "[“”]", "note": "Guillemets anglais courbes (“ ”)."},
+    "guillemets_droits": {"motif": "\"", "note": "Guillemets droits (\")."},
+    "gras_markdown": {"motif": "\\*\\*[^*]+\\*\\*", "note": "Gras dans un texte courant."},
+    "code_inline": {"motif": "`[^`]+`", "note": "Code inline sur des mots qui ne sont pas nécessairement du code."},
+    "puce_liste": {"motif": "^\\s*[-*]\\s+", "note": "Ligne de liste à puces, comptée par ligne (drapeau MULTILINE appliqué par le script)."}
+  },
+
+  "artefacts_outil": {
+    "note": "Ces formes sont, en français, le plus souvent produites par la correction automatique ou l'éditeur, pas par un choix personnel : l'espace insécable avant ; : ? ! et les guillemets « » (protocole d'extraction, Règle 4). Leur comptage est rapporté mais marqué comme suspect plutôt que traité comme un marqueur de voix.",
+    "espace_insecable_avant_double_ponctuation": true,
+    "guillemets_chevrons": true
+  }
+}
