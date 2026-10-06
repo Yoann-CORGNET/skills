@@ -1,0 +1,11 @@
+#!/bin/sh
+# Format staged markdown at a 100-char wrap before each commit.
+# No husky: this repo has no package.json. Enable once with
+#   git config core.hooksPath .githooks
+set -e
+
+files=$(git diff --cached --name-only --diff-filter=ACMR -- '*.md')
+[ -z "$files" ] && exit 0
+
+printf '%s\n' "$files" | xargs npx --yes prettier@3 --write
+printf '%s\n' "$files" | xargs git add

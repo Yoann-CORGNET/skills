@@ -1,0 +1,15 @@
+{
+  "name": "{{NOM_PLUGIN}}",
+  "version": "1.0.0",
+  "description": "Rédaction dans la voix éditoriale de {{NOM_PERSONNE}}. Généré par write-forge.",
+  "author": {
+    "name": "{{NOM_PERSONNE}}",
+    "email": "{{EMAIL_PERSONNE}}"
+  },
+  "license": "{{LICENCE}}",
+  "keywords": [
+    "redaction",
+    "voix",
+    "{{NOM_PLUGIN}}"
+  ]
+}
